@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #2a3b7b, #5a2a8c);
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .container {
+    background: #1e1e2f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+body.dark-mode h1 {
+    color: #e0e0e0;
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.date-picker label {
+    color: #333;
+    font-weight: 500;
+}
+
+body.dark-mode .date-picker label {
+    color: #e0e0e0;
+}
+
+.date-picker input {
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+body.dark-mode .date-picker input {
+    background: #2a2a3b;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+.date-picker input:focus {
+    border-color: #6e8efb;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .stats {
+    background: #2a2a3b;
+}
+
+.stats p {
+    color: #555;
+    font-weight: 500;
+}
+
+body.dark-mode .stats p {
+    color: #b0b0b0;
+}
+
+.clear-btn, .theme-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left: 10px;
+}
+
+.theme-btn {
+    background: #6e8efb;
+}
+
+.clear-btn:hover {
+    background: #e63939;
+}
+
+.theme-btn:hover {
+    background: #5a78e0;
+}
+
+body.dark-mode .theme-btn {
+    background: #a777e3;
+}
+
+body.dark-mode .theme-btn:hover {
+    background: #8c5cb3;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input input, .task-input button {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#task-input {
+    flex: 1;
+}
+
+.add-btn {
+    background: #6e8efb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+body.dark-mode .task-input input {
+    background: #2a2a3b;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+.task-input input:focus {
+    border-color: #6e8efb;
+}
+
+.add-btn:hover {
+    background: #5a78e0;
+}
+
+body.dark-mode .add-btn {
+    background: #a777e3;
+}
+
+body.dark-mode .add-btn:hover {
+    background: #8c5cb3;
+}
+
+.date-section {
+    margin-bottom: 20px;
+}
+
+.date-section h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode .date-section h3 {
+    color: #e0e0e0;
+}
+
+.date-section.overdue h3 {
+    color: #ff4d4d;
+}
+
+.date-section .toggle-icon::after {
+    content: '▼';
+    font-size: 0.8em;
+    color: #ff4d4d; /* Red arrow */
+}
+
+.date-section.collapsed .toggle-icon::after {
+    content: '▶';
+    color: #ff4d4d; /* Red arrow */
+}
+
+.date-section.one-task .task-list li:not(:first-child) {
+    display: none;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeIn 0.5s ease-in;
+}
+
+body.dark-mode .task-item {
+    background: #2a2a3b;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+body.dark-mode .task-item.completed span {
+    color: #666;
+}
+
+.task-item input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-item span {
+    flex: 1;
+    font-size: 1.1em;
+    color: #333;
+}
+
+body.dark-mode .task-item span {
+    color: #e0e0e0;
+}
+
+.task-item button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.task-item button:hover {
+    background: #e63939;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .date-picker {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-input {
+        flex-direction: column;
+    }
+
+    #task-input, .add-btn {
+        width: 100%;
+    }
+
+    .clear-btn, .theme-btn {
+        margin-left: 0;
+        width: 100%;
+    }
+}
